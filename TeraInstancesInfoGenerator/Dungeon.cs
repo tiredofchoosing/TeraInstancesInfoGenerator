@@ -31,6 +31,9 @@ namespace TeraInstancesInfoGenerator
             var maxStr = attrs.SingleOrDefault(a => a.Name == "dungeonMaxLevel")?.Value;
             var ilvlStr = attrs.SingleOrDefault(a => a.Name == "minItemLevel")?.Value;
 
+            if (idStr == "9999" && string.IsNullOrWhiteSpace(ilvlStr))
+                ilvlStr = "0";
+
             if (string.IsNullOrWhiteSpace(idStr) ||
                 string.IsNullOrWhiteSpace(minStr) ||
                 string.IsNullOrWhiteSpace(maxStr) ||
