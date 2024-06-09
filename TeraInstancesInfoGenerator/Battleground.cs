@@ -23,7 +23,8 @@ namespace TeraInstancesInfoGenerator
             if (attrs == null || !attrs.Any())
                 return false;
 
-            var dataAttrs = elem.Element("CommonData")?.Attributes();
+            var ns = elem.Name.Namespace;
+            var dataAttrs = elem.Element(ns + "CommonData")?.Attributes();
             if (dataAttrs == null || !dataAttrs.Any())
                 return false;
 

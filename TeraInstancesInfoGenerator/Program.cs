@@ -56,8 +56,9 @@ namespace TeraInstancesInfoGenerator
 
             Dictionary<int, Instance> instances = new();
 
-            IEnumerable<XElement> elems = infoXml.Root.Elements().Where(e => e.Name == elemName);
-            IEnumerable<XElement> support = infoXml.Root.Elements().Where(e => e.Name == "SupportMatching");
+            var ns = infoXml.Root.Name.Namespace;
+            IEnumerable<XElement> elems = infoXml.Root.Elements(ns + elemName);
+            IEnumerable<XElement> support = infoXml.Root.Elements(ns + "SupportMatching");
             foreach (XElement elem in elems.Concat(support))
             {
                 var success = parser(elem, out var inst, (string id) => GetNameById(strXml, id));
